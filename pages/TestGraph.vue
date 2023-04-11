@@ -1,14 +1,12 @@
 <template>
-    <div>
-        <h1>{{ "Bar Graph" }}</h1>
-    <CollectionMain  type="chart" :BarChartData="BarChartData" />
-    </div>
     
+    <CollectionMain type="chart" :LineChartData="LineChartData" :DonutChartData="DonutChartData"/>
+
 </template>
 
 <script setup lang="ts">
 
-import { BarChartData }  from '../ts/bar'
+import { LineChartData } from '../ts/line'
+import { DonutChartData }  from '../ts/donut'
 
 </script>
-

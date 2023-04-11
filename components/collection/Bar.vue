@@ -1,26 +1,34 @@
 <template>
-   <div>
-      <vue-highCharts type="chart" :options="chartData" />
-   </div>
+  <div>
+    <Bar :data="data" :options="options" />
+  </div>
 </template>
 <script setup lang="ts">
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
+import { Bar } from "vue-chartjs";
 
-import VueHighCharts from 'vue3-highcharts'
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-interface BarSchema{
-   chart:object,
-   title:object,
-   xAxis:object,
-   yAxis:object,
-   tooltip:object,
-   plotOptions:object,
-   series:object
-
-}
-
-let props = defineProps<{ BarChartData:BarSchema }>()
-
-const chartData = computed(() => {
-   return props.BarChartData
-})
+const data = {
+  labels: ["January", "February", "March"],
+  datasets: [{ data: [40, 20, 12] }],
+};
+const options = {
+  responsive: true,
+};
 </script>
